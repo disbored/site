@@ -4,6 +4,6 @@ import tsconfigPaths from 'vite-tsconfig-paths'
 
 /** https://vitejs.dev/config/ */
 export default defineConfig({
-    base: 'https://disbored.github.io/site',
+    base: 'https://surg.fyi',
     plugins: [react(), tsconfigPaths()],
 })
