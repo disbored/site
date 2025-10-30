@@ -1,0 +1,6 @@
+services:
+  website:
+    image: ghcr.io/disbored/site:latest
+    ports:
+      - "4322:8080"
+    restart: unless-stopped
