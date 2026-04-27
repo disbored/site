@@ -1,4 +1,4 @@
-FROM node:lts
+FROM node:22-alpine AS builder
 WORKDIR /app
 
 ENV PNPM_HOME="/pnpm"
@@ -11,8 +11,6 @@ RUN pnpm install --frozen-lockfile
 COPY . .
 RUN pnpm build
 
-ENV HOST=0.0.0.0
-ENV PORT=8080
-EXPOSE 8080
-
-CMD ["pnpm", "start"]
+FROM caddy:alpine
+COPY --from=builder /app/dist /usr/share/caddy
+EXPOSE 80
